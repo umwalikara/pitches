@@ -143,61 +143,61 @@ def new_comment(id):
     #title = f'{pitch_result.id} review'
     return render_template('new_comment.html',comment_form=form, comments=comments, Pitch= pitch)
 
-# @main.route('/user/<uname>/update/pic',methods= ['POST'])
-# @login_required
-# def update_pic(uname):
-#     user = User.query.filter_by(username = uname).first()
-#     if 'photo' in request.files:
-#         filename = photos.save(request.files['photo'])
-#         path = f'photos/{filename}'
-#         user.profile_pic_path = path 
-#         db.session.commit()
-#     return redirect(url_for('main.profile',uname=uname))
+@main.route('/user/<uname>/update/pic',methods= ['POST'])
+@login_required
+def update_pic(uname):
+    user = User.query.filter_by(username = uname).first()
+    if 'photo' in request.files:
+        filename = photos.save(request.files['photo'])
+        path = f'photos/{filename}'
+        user.profile_pic_path = path 
+        db.session.commit()
+    return redirect(url_for('main.profile',uname=uname))
 
-# @main.route('/user/<uname>')
-# def profile(uname):
-#     user = User.query.filter_by(username = uname).first()
+@main.route('/user/<uname>')
+def profile(uname):
+    user = User.query.filter_by(username = uname).first()
 
-#     if user is None:
-#         abort(404)
+    if user is None:
+        abort(404)
 
-#     return render_template("profile/profile.html", user = user)
+    return render_template("profile/profile.html", user = user)
 
-# @main.route('/user/<uname>/update',methods = ['GET','POST'])
-# @login_required
-# def update_profile(uname):
-#     user = User.query.filter_by(username = uname).first()
-#     if user is None:
-#         abort(404)
+@main.route('/user/<uname>/update',methods = ['GET','POST'])
+@login_required
+def update_profile(uname):
+    user = User.query.filter_by(username = uname).first()
+    if user is None:
+        abort(404)
 
-#     form = UpdateProfile()
+    form = UpdateProfile()
 
-#     if form.validate_on_submit():
-#         user.bio = form.bio.data
+    if form.validate_on_submit():
+        user.bio = form.bio.data
 
-#         db.session.add(user)
-#         db.session.commit()
+        db.session.add(user)
+        db.session.commit()
 
-#         return redirect(url_for('.profile',uname=user.username))
+        return redirect(url_for('.profile',uname=user.username))
     
-#     return render_template('profile/update.html',form =form)
+    return render_template('profile/update.html',form =form)
 
-# @main.route('/view/comment/<int:id>')
-# def view_comments(id):
-#     '''
-#     Function that returs  the comments belonging to a particular pitch
-#     '''
-#     comments = Comment.get_comments(id)
-#     print(comments)
-#     return render_template('view_comments.html',comments = comments, id=id)
+@main.route('/view/comment/<int:id>')
+def view_comments(id):
+    '''
+    Function that returs  the comments belonging to a particular pitch
+    '''
+    comments = Comment.get_comments(id)
+    print(comments)
+    return render_template('view_comments.html',comments = comments, id=id)
 
 
 
-# @main.route('/test/<int:id>')  
-# def test(id):
-#     '''
-#     this is route for basic testing
-#     '''
-#     pitch =pitch.query.filter_by(id=1).first()
+@main.route('/test/<int:id>')  
+def test(id):
+    '''
+    this is route for basic testing
+    '''
+    pitch =pitch.query.filter_by(id=1).first()
 
-#     return render_template('test.html',Pitch = Pitch)
+    return render_template('test.html',Pitch = Pitch)
