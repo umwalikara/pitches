@@ -44,32 +44,32 @@ class User(UserMixin, db.Model):
         return f'User {self.username}'
 
 
-# class Pitch(db.Model):
+class Pitch(db.Model):
     
-#     __tablename__ = 'pitch'
+    __tablename__ = 'pitch'
 
-#     id = db.Column(db.Integer,primary_key = True)
-#     pitch = db.Column(db.String)
-#     category_id = db.Column(db.Integer)
-#     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-#     comments = db.relationship('Comment',backref = 'pitch',lazy="dynamic")
+    id = db.Column(db.Integer,primary_key = True)
+    pitch = db.Column(db.String)
+    category_id = db.Column(db.Integer)
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    comments = db.relationship('Comment',backref = 'pitch',lazy="dynamic")
 
-#     def save_pitch(self):
-#         '''
-#         Function that saves pitches
-#         '''
-#         db.session.add(self)
-#         db.session.commit()
+    def save_pitch(self):
+        '''
+        Function that saves pitches
+        '''
+        db.session.add(self)
+        db.session.commit()
     
-#     @classmethod
-#     def get_all_pitches(cls):
+    @classmethod
+    def get_all_pitches(cls):
        
-#         return Pitch.query.all()
+        return Pitch.query.all()
 
-#     @classmethod
-#     def get_pitches_by_category(cls,cat_id):
+    @classmethod
+    def get_pitches_by_category(cls,cat_id):
         
-#         return Pitch.query.filter_by(category_id= cat_id)
+        return Pitch.query.filter_by(category_id= cat_id)
 
 
 # class Comment(db.Model):
