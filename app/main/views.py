@@ -59,14 +59,14 @@ def promotion():
     return render_template('promotion.html', title = title, pitches= pitches )
 
 
-# @main.route('/product/pitches/')
-# def product():
-#     '''
-#     View root page function that returns the index page and its data
-#     '''
-#     title = 'Product Pitches'
-#     pitches= Pitch.get_all_pitches()
-#     return render_template('product.html', title = title, pitches= pitches )
+@main.route('/product/pitches/')
+def product():
+    '''
+    View root page function that returns the index page and its data
+    '''
+    title = 'Product Pitches'
+    pitches= Pitch.get_all_pitches()
+    return render_template('product.html', title = title, pitches= pitches )
  
 #  end of category root functions
 
