@@ -11,19 +11,19 @@ import markdown2
 
 
 # Views
-# @main.route('/')
-# def index():
-#     '''
-#     View root page function that returns the index page and its data
-#     '''
+@main.route('/')
+def index():
+    '''
+    View root page function that returns the index page and its data
+    '''
 
-#     # pitch = pitch.query.filter_by().first()
-#     title = 'Home - Welcome to The  Pitching'
+    # pitch = pitch.query.filter_by().first()
+    title = 'Home - Welcome to The  Pitching'
 
-#     # search_pitch = request.args.get('pitch_query')
-#     pitch= Pitch.query.all()  
+    # search_pitch = request.args.get('pitch_query')
+    pitch= Pitch.query.all()  
 
-#     return render_template('index.html', title = title, pitch= pitch)
+    return render_template('index.html', title = title, pitch= pitch)
    
 #this section consist of the category root functions
 
