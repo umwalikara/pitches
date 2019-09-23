@@ -70,17 +70,17 @@ def product():
  
 #  end of category root functions
 
-# @main.route('/pitch/<int:pitch_id>')
-# def pitch(pitch_id):
+@main.route('/pitch/<int:pitch_id>')
+def pitch(pitch_id):
 
-#     '''
-#     View pitch page function that returns the pitch details page and its data
-#     '''
-#     found_pitch= get_pitch(pitch_id)
-#     title = pitch_id
-#     pitch_comments = Comment.get_comments(pitch_id)
+    '''
+    View pitch page function that returns the pitch details page and its data
+    '''
+    found_pitch= get_pitch(pitch_id)
+    title = pitch_id
+    pitch_comments = Comment.get_comments(pitch_id)
 
-#     return render_template('pitch.html',title= title ,found_pitch= found_pitch, pitch_comments= pitch_comments)
+    return render_template('pitch.html',title= title ,found_pitch= found_pitch, pitch_comments= pitch_comments)
 
 # @main.route('/search/<pitch_name>')
 # def search(pitch_name):
