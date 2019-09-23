@@ -27,14 +27,14 @@ def index():
    
 #this section consist of the category root functions
 
-# @main.route('/inteview/pitches/')
-# def interview():
-#     '''
-#     View root page function that returns the index page and its data
-#     '''
-#     pitches= Pitch.get_all_pitches()
-#     title = 'Home - Welcome to The best Pitching Website Online'  
-#     return render_template('interview.html', title = title, pitches= pitches )
+@main.route('/inteview/pitches/')
+def interview():
+    '''
+    View root page function that returns the index page and its data
+    '''
+    pitches= Pitch.get_all_pitches()
+    title = 'Home - Welcome to The best Pitching Website Online'  
+    return render_template('interview.html', title = title, pitches= pitches )
 
 # @main.route('/pick_up_lines/pitches/')
 # def pick_up_line():
