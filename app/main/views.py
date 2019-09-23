@@ -128,20 +128,20 @@ def category(id):
     pitches_in_category = Pitches.get_pitch(id)
     return render_template('category.html' ,category= category, pitches= pitches_in_category)
 
-# @main.route('/pitch/comments/new/<int:id>',methods = ['GET','POST'])
-# @login_required
-# def new_comment(id):
-#     form = CommentsForm()
-#     vote_form = UpvoteForm()
-#     if form.validate_on_submit():
-#         new_comment = Comment(pitch_id =id,comment=form.comment.data,username=current_user.username,votes=form.vote.data)
-#         new_comment.save_comment()
-#         return redirect(url_for('main.index'))
-#     comments = Comment.get_comments(id)
-#     print(comments)
+@main.route('/pitch/comments/new/<int:id>',methods = ['GET','POST'])
+@login_required
+def new_comment(id):
+    form = CommentsForm()
+    vote_form = UpvoteForm()
+    if form.validate_on_submit():
+        new_comment = Comment(pitch_id =id,comment=form.comment.data,username=current_user.username,votes=form.vote.data)
+        new_comment.save_comment()
+        return redirect(url_for('main.index'))
+    comments = Comment.get_comments(id)
+    print(comments)
     
-#     #title = f'{pitch_result.id} review'
-#     return render_template('new_comment.html',comment_form=form, comments=comments, Pitch= pitch)
+    #title = f'{pitch_result.id} review'
+    return render_template('new_comment.html',comment_form=form, comments=comments, Pitch= pitch)
 
 # @main.route('/user/<uname>/update/pic',methods= ['POST'])
 # @login_required
