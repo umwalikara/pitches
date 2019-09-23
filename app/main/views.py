@@ -82,37 +82,37 @@ def pitch(pitch_id):
 
     return render_template('pitch.html',title= title ,found_pitch= found_pitch, pitch_comments= pitch_comments)
 
-# @main.route('/search/<pitch_name>')
-# def search(pitch_name):
-#     '''
-#     View function to display the search results
-#     '''
-#     searched_pitches = search_pitch(pitch_name)
-#     title = f'search results for {pitch_name}'
+@main.route('/search/<pitch_name>')
+def search(pitch_name):
+    '''
+    View function to display the search results
+    '''
+    searched_pitches = search_pitch(pitch_name)
+    title = f'search results for {pitch_name}'
 
-#     return render_template('search.html',pitches = searched_pitches)
+    return render_template('search.html',pitches = searched_pitches)
 
-# @main.route('/pitch/new/', methods = ['GET','POST'])
-# @login_required
-# def new_pitch():
-#     '''
-#     Function that creates new pitches
-#     '''
-#     form = PitchForm()
+@main.route('/pitch/new/', methods = ['GET','POST'])
+@login_required
+def new_pitch():
+    '''
+    Function that creates new pitches
+    '''
+    form = PitchForm()
 
 
-#     if category is None:
-#         abort( 404 )
+    if category is None:
+        abort( 404 )
 
-#     if form.validate_on_submit():
-#         pitch= form.content.data
-#         category_id = form.category_id.data
-#         new_pitch= Pitch(pitch= pitch, category_id= category_id)
+    if form.validate_on_submit():
+        pitch= form.content.data
+        category_id = form.category_id.data
+        new_pitch= Pitch(pitch= pitch, category_id= category_id)
 
-#         new_pitch.save_pitch()
-#         return redirect(url_for('main.index'))
+        new_pitch.save_pitch()
+        return redirect(url_for('main.index'))
 
-#     return render_template('new_pitch.html', new_pitch_form= form, category= category)
+    return render_template('new_pitch.html', new_pitch_form= form, category= category)
 
 # @main.route('/category/<int:id>')
 # def category(id):
