@@ -97,25 +97,25 @@ class Comment(db.Model):
 
         return comments
 
-# class Category(db.Model):
-#     '''
-#     Function that defines different categories of pitches
-#     '''
-#     __tablename__ ='categories'
+class Category(db.Model):
+    '''
+    Function that defines different categories of pitches
+    '''
+    __tablename__ ='categories'
 
 
-#     id = db.Column(db.Integer, primary_key=True)
-#     # name_of_category = db.Column(db.String(255))
-#     category_description = db.Column(db.String(255))
-#     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    id = db.Column(db.Integer, primary_key=True)
+    # name_of_category = db.Column(db.String(255))
+    category_description = db.Column(db.String(255))
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
 
-#     @classmethod
-#     def get_categories(cls):
+    @classmethod
+    def get_categories(cls):
         
-#         categories = Category.query.all()
-#         return categories 
+        categories = Category.query.all()
+        return categories 
 
 
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return User.query.get(int(user_id))
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
