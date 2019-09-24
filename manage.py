@@ -1,8 +1,7 @@
 from flask_script import Manager,Server
 from app import create_app,db
-# from app.models import User,Role
 from  flask_migrate import Migrate, MigrateCommand
-from app.models import User
+from app.models import User,Pitch,Comment
 from flask_login import LoginManager
 # from app.models import User,Pitch,Comment,Vote,PitchCategory
 

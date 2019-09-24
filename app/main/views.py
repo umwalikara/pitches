@@ -1,8 +1,7 @@
 
 from flask import render_template, request, redirect, url_for,abort
 from . import main
-# from ..request import get_movies, get_movie, search_movie
-from .forms import UpdateProfile #ReviewForm,
+from .forms import UpdateProfile 
 from .forms import CommentsForm, UpdateProfile, PitchForm, UpvoteForm
 from ..models import User,Pitch,Comment
 from flask_login import login_required,current_user
@@ -17,10 +16,8 @@ def index():
     View root page function that returns the index page and its data
     '''
 
-    # pitch = pitch.query.filter_by().first()
     title = 'Home - Welcome to The  Pitching'
 
-    # search_pitch = request.args.get('pitch_query')
     pitch= Pitch.query.all()  
 
     return render_template('index.html', title = title, pitch= pitch)
@@ -35,17 +32,6 @@ def interview():
     pitches= Pitch.get_all_pitches()
     title = 'Home - Welcome to The best Pitching Website Online'  
     return render_template('interview.html', title = title, pitches= pitches )
-
-# @main.route('/pick_up_lines/pitches/')
-# def pick_up_line():
-#     '''
-#     View root page function that returns the index page and its data
-#     '''
-#     title = 'Pick Up Lines'
-
-#     pitches= Pitch.get_all_pitches()
-
-#     return render_template('pick_up_lines.html', title = title, pitches= pitches )
 
 @main.route('/promotion/pitches/')
 def promotion():
@@ -140,7 +126,6 @@ def new_comment(id):
     comments = Comment.get_comments(id)
     print(comments)
     
-    #title = f'{pitch_result.id} review'
     return render_template('new_comment.html',comment_form=form, comments=comments, Pitch= pitch)
 
 @main.route('/user/<uname>/update/pic',methods= ['POST'])
