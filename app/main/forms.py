@@ -18,12 +18,12 @@ class CommentsForm(FlaskForm):
     vote=RadioField('default field arguments', choices=[('1', 'UpVote'), ('1', 'DownVote')])
     submit = SubmitField('SUBMIT')  
 
-class UpdateProfile(FlaskForm):
-    bio = TextAreaField('we need your comment.',validators = [Required()])
-    submit = SubmitField('Submit') 
+# class UpdateProfile(FlaskForm):
+#     bio = TextAreaField('we need your comment.',validators = [Required()])
+#     submit = SubmitField('Submit') 
 
 class PitchForm(FlaskForm):
-    category_id = SelectField('Select Category', choices=[('1', 'Story'), ('2', 'picking'), ('3', 'publicity'),('4','selling products')])
+    category_id = SelectField('Select Category', choices=[('1', 'Story'), ('2', 'interview'), ('3', 'promotion'),('4','products')])
     content = TextAreaField('YOUR PITCH')
     submit = SubmitField('Create Pitch')
 
